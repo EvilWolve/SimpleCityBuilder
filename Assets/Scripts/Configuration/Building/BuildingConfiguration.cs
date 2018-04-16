@@ -9,12 +9,27 @@ namespace Configuration.Building
         public string buildingName;
 
         public BuildingType buildingType;
-        public int maxAmount;
+        public int maxAmount; // -1 for infinite
 
         public Vector2Int dimensions;
 
         public Sprite icon;
         public GameObject prefab;
         public Color mainColor;
+
+        public override bool Equals(object obj)
+        {
+            BuildingConfiguration other = obj as BuildingConfiguration;
+
+            if (other == null)
+                return false;
+
+            return this.name.Equals(other.name);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

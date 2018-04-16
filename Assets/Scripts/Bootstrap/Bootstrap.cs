@@ -1,5 +1,5 @@
-﻿using BuildingManagement;
-using BuildingManagement.Visual;
+﻿using Buildings;
+using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine;
 using Utilities;
@@ -12,8 +12,8 @@ namespace Bootstrap
         {
             this.InitialiseServices();
             
-            IBuildingManager buildingManager = ServiceLocator.Instance.GetService<IBuildingManager>();
-            buildingManager.Load();
+            IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
+            buildingService.Load();
             
             IBuildingConfigurationService buildingConfigurationService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
             BuildingLibrary library = Resources.Load<BuildingLibrary>("Building Library");
@@ -23,14 +23,14 @@ namespace Bootstrap
         void InitialiseServices()
         {
             ServiceLocator.Instance.ProvideService<IBuildingConfigurationService>(new BuildingConfigurationService());
-            ServiceLocator.Instance.ProvideService<IBuildingManager>(new BuildingManager());
+            ServiceLocator.Instance.ProvideService<IBuildingService>(new BuildingService());
             ServiceLocator.Instance.ProvideService<IBuildingVisualFactory>(new BuildingVisualFactory());
         }
 
         void OnApplicationQuit()
         {
-            IBuildingManager buildingManager = ServiceLocator.Instance.GetService<IBuildingManager>();
-            buildingManager.Save();
+            IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
+            buildingService.Save();
         }
     }
 }
