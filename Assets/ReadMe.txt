@@ -11,3 +11,5 @@ There are a few such restrictions in the design I was given.
 
 3. All unique structures have individual, unique popups.
 -> This is the reverse of the above points. In my experience, good UI/UX design requires at least some common layout for functionally and contextually similar popups. For example, all building popups should have a close button and it should always be in the same place. I'll go a bit further and also assume that the location of the name and the boundary of the popups will be the same.
+
+I'll probably need access to the BuildingManager and the BuildingConfigurationService in a lot of places. I don't like singletons, but this project is a bit too small to throw an IoC Container at it. I'll make do with a Service Locator.
