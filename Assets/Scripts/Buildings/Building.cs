@@ -1,10 +1,10 @@
-﻿using BuildingManagement.Save;
-using BuildingManagement.Visual;
+﻿using Buildings.Save;
+using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine;
 using Utilities;
 
-namespace BuildingManagement
+namespace Buildings
 {
     public class Building
     {
@@ -47,7 +47,11 @@ namespace BuildingManagement
         public override bool Equals(object obj)
         {
             Building other = obj as Building;
-            return this.Config.name.Equals(other.Config.name)
+
+            if (other == null)
+                return false;
+            
+            return this.Config.Equals(other.Config)
                    && this.gridPosition.Equals(other.gridPosition);
         }
 

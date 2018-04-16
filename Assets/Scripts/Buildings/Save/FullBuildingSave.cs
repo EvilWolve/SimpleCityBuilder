@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BuildingManagement.Save
+namespace Buildings.Save
 {
 	[Serializable]
 	public class FullBuildingSave

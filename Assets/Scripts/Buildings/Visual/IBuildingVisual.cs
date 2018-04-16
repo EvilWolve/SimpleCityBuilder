@@ -1,4 +1,4 @@
-﻿namespace BuildingManagement.Visual
+﻿namespace Buildings.Visual
 {
 	public interface IBuildingVisual
 	{

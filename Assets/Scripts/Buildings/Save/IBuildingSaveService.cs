@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BuildingManagement.Save
+namespace Buildings.Save
 {
     public interface IBuildingSaveService
     {

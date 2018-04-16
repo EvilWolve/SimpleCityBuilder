@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace BuildingManagement.Visual
+namespace Buildings.Visual
 {
 	public class BuildingVisualFactory : IBuildingVisualFactory
 	{

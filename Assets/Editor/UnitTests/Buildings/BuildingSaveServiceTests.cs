@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
-using BuildingManagement;
-using BuildingManagement.Save;
-using BuildingManagement.Visual;
+using Buildings;
+using Buildings.Save;
+using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine;
 using Utilities;

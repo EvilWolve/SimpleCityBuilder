@@ -3,7 +3,7 @@ using Configuration.Building;
 using Save;
 using Utilities;
 
-namespace BuildingManagement.Save
+namespace Buildings.Save
 {
 	public class BuildingSaveService : IBuildingSaveService
 	{

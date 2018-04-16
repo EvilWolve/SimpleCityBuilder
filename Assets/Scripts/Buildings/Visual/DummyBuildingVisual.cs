@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BuildingManagement.Visual
+namespace Buildings.Visual
 {
 	public class DummyBuildingVisual : IBuildingVisual
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BuildingManagement;
-using BuildingManagement.Visual;
+using Buildings;
+using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine.Assertions;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BuildingManagement.Save
+namespace Buildings.Save
 {
 	[Serializable]
 	public class BuildingSaveData
