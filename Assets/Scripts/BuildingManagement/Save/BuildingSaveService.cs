@@ -45,7 +45,7 @@ namespace BuildingManagement.Save
 				{
 					BuildingConfiguration buildingConfig = buildingConfigurationService.GetBuilding(saveData.configName);
 					Building building = new Building(buildingConfig);
-					building.SetLocation(saveData.location);
+					building.SetGridPosition(saveData.gridPosition);
 					
 					result.Add(building);
 				}

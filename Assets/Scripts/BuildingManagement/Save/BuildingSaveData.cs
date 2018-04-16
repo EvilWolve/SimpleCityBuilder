@@ -7,7 +7,7 @@ namespace BuildingManagement.Save
 	public class BuildingSaveData
 	{
 		public string configName;
-		public Vector2Int location;
+		public Vector2Int gridPosition;
 		
 		// Add other data such as building level here later on
 	}

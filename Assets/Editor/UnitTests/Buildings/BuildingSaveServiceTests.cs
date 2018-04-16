@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BuildingManagement;
 using BuildingManagement.Save;
+using BuildingManagement.Visual;
 using Configuration.Building;
 using UnityEngine;
 using Utilities;
@@ -18,7 +19,10 @@ namespace UnitTests.Buildings
         {
             this.buildingSaveService = new BuildingSaveService();
             
-            this.configService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
+            this.configService = new BuildingConfigurationService();
+            ServiceLocator.Instance.ProvideService<IBuildingConfigurationService>(this.configService);
+            
+            ServiceLocator.Instance.ProvideService<IBuildingVisualFactory>(new DummyBuildingVisualFactory());
 
             BuildingLibrary library = this.GetFakeBuildingLibrary();
             library.buildingConfigurations = new BuildingConfiguration[]

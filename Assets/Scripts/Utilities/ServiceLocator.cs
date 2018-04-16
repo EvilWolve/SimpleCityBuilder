@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BuildingManagement;
+using BuildingManagement.Visual;
 using Configuration.Building;
 using UnityEngine.Assertions;
 
@@ -9,6 +10,7 @@ namespace Utilities
     public interface IServiceLocator
     {
         T GetService<T>();
+        void ProvideService<T>(object service);
     }
     
     public class ServiceLocator : IServiceLocator
@@ -35,8 +37,6 @@ namespace Utilities
         ServiceLocator()
         {
             this.services = new Dictionary<Type, object>();
-            
-            this.InitialiseServices();
         }
 
         public T GetService<T>()
@@ -47,9 +47,17 @@ namespace Utilities
             return (T)this.services[type];
         }
 
-        void InitialiseServices()
+        public void ProvideService<T>(object service)
         {
-            this.services.Add(typeof(IBuildingConfigurationService), new BuildingConfigurationService());
+            Type type = typeof(T);
+            if (this.services.ContainsKey(type))
+            {
+                this.services[type] = service;
+            }
+            else
+            {
+                this.services.Add(type, service);
+            }
         }
     }
 }

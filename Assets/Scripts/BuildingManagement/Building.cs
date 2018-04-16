@@ -1,39 +1,59 @@
 ﻿using BuildingManagement.Save;
+using BuildingManagement.Visual;
 using Configuration.Building;
 using UnityEngine;
+using Utilities;
 
 namespace BuildingManagement
 {
     public class Building
     {
-        BuildingConfiguration config;
+        public delegate void OnGridPositionChangedDelegate(Vector2Int gridPosition);
+        public event OnGridPositionChangedDelegate onGridPositionChanged;
         
-        public Vector2Int Location { get; private set; }
+        public BuildingConfiguration Config { get; private set; }
+        
+        public IBuildingVisual Visual { get; private set; }
+
+        Vector2Int gridPosition;
 
         public Building(BuildingConfiguration config)
         {
-            this.config = config;
+            this.Config = config;
+
+            IBuildingVisualFactory buildingVisualFactory = ServiceLocator.Instance.GetService<IBuildingVisualFactory>();
+            this.Visual = buildingVisualFactory.CreateVisualForBuilding(this);
         }
 
-        public void SetLocation(Vector2Int newLocation)
+        public void SetGridPosition(Vector2Int newGridPosition)
         {
-            this.Location = newLocation;
+            this.gridPosition = newGridPosition;
+
+            if (this.onGridPositionChanged != null)
+            {
+                this.onGridPositionChanged(this.gridPosition);
+            }
         }
 
         public BuildingSaveData CreateSaveData()
         {
             return new BuildingSaveData
             {
-                configName = this.config.name,
-                location = this.Location
+                configName = this.Config.name,
+                gridPosition = this.gridPosition
             };
         }
 
         public override bool Equals(object obj)
         {
             Building other = obj as Building;
-            return this.config.name.Equals(other.config.name)
-                   && this.Location.Equals(other.Location);
+            return this.Config.name.Equals(other.Config.name)
+                   && this.gridPosition.Equals(other.gridPosition);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
