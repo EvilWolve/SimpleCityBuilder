@@ -1,4 +1,5 @@
-﻿using Buildings.Save;
+﻿using Board;
+using Buildings.Save;
 using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Buildings
         public IBuildingVisual Visual { get; private set; }
 
         Vector2Int gridPosition;
+        
+        public GridRect GridArea { get { return new GridRect(this.gridPosition, this.Config.dimensions); } }
 
         public Building(BuildingConfiguration config)
         {

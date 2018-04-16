@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Board;
 using Buildings.Save;
 using Configuration.Building;
 
@@ -11,28 +12,28 @@ namespace Buildings
      public class BuildingService : IBuildingService
      {
          readonly IBuildingSaveService saveService;
-         
-         //TODO: Reference to GameBoard here
+
+         readonly IGameboard gameboard;
 
          List<Building> buildings = new List<Building>();
          
          public BuildingService()
          {
              this.saveService = new BuildingSaveService();
+             
+             this.gameboard = new Gameboard();
          }
          
          public void PlaceBuilding(Building building)
          {
-             // TODO: Building will already have the correct location, we just need to then communicate that to the GameBoard here
+             this.gameboard.SetOccupied(building.GridArea, true);
              
              this.buildings.Add(building);
          }
 
          public bool CanPlaceBuilding(Building building)
          {
-             // TODO: The building has the target location, so we can query the GameBoard from here to check if a slot with the building's location and dimensions is occupied.
-             
-             throw new System.NotImplementedException();
+             return this.gameboard.IsOccupied(building.GridArea);
          }
 
          public bool CanBuildBuilding(BuildingConfiguration buildingConfig)
