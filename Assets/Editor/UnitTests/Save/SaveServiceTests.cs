@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace UnitTests.Save
 {
-    public class TaskLibraryTests
+    public class SaveServiceTests
     {
         ISaveService saveService;
 
