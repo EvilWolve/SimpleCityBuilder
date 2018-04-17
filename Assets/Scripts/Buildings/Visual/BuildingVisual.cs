@@ -4,6 +4,11 @@ namespace Buildings.Visual
 {
 	public class BuildingVisual : MonoBehaviour, IBuildingVisual
 	{
+		[SerializeField] BoxCollider boxCollider;
+
+		[SerializeField] Transform visualRoot;
+		[SerializeField] MeshRenderer meshRenderer;
+		
 		Building building;
 		
 		public void SetBuilding(Building building)
@@ -12,14 +17,18 @@ namespace Buildings.Visual
 			
 			this.building = building;
 			
+			this.boxCollider.center = new Vector3(building.GridArea.Center.x, this.boxCollider.center.y, building.GridArea.Center.y);
+			this.boxCollider.size = new Vector3(this.building.GridArea.Width, this.boxCollider.size.y, this.building.GridArea.Height);
+
+			this.visualRoot.position = new Vector3(building.GridArea.Center.x, 0f, building.GridArea.Center.y);
+			this.visualRoot.localScale = new Vector3(this.building.GridArea.Width, 1f, this.building.GridArea.Height);
+			
 			this.RegisterEvents();
 		}
 
 		public void ShowValidPlacement(bool isValid)
 		{
-			// TODO: Set mesh renderer's material tint to default color if valid or red otherwise.
-			
-			throw new System.NotImplementedException();
+			this.meshRenderer.material.SetColor("_Tint", isValid ? this.building.Config.mainColor : Color.red);
 		}
 
 		void RegisterEvents()

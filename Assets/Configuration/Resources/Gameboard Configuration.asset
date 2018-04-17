@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Gameboard Configuration
   m_EditorClassIdentifier: 
   dimensions: {x: 25, y: 25}
-  prefab: {fileID: 0}
+  prefab: {fileID: 1629764000284662, guid: a2febb316f5fcdb47a2d30a0d0086be8, type: 2}

@@ -1,15 +1,13 @@
-﻿using Board.Visual;
-using Configuration.Board;
-using UnityEngine;
+﻿using Configuration.Board;
 
 namespace Board
 {
     public interface IGameboard
     {
-        IGameboardVisual Visual { get; }
-        
         int Width { get; }
         int Height { get; }
+
+        GameboardConfiguration Config { get; }
         
         void Initialise(GameboardConfiguration config);
         void Clear();

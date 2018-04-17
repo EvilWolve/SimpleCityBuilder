@@ -13,8 +13,6 @@ namespace Buildings
         public event OnGridPositionChangedDelegate onGridPositionChanged;
         
         public BuildingConfiguration Config { get; private set; }
-        
-        public IBuildingVisual Visual { get; private set; }
 
         Vector2Int gridPosition;
         
@@ -23,9 +21,6 @@ namespace Buildings
         public Building(BuildingConfiguration config)
         {
             this.Config = config;
-
-            IBuildingVisualFactory buildingVisualFactory = ServiceLocator.Instance.GetService<IBuildingVisualFactory>();
-            this.Visual = buildingVisualFactory.CreateVisualForBuilding(this);
         }
 
         public void SetGridPosition(Vector2Int newGridPosition)

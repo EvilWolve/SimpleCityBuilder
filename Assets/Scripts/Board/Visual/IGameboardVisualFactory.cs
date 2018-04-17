@@ -4,6 +4,6 @@ namespace Board.Visual
 {
 	public interface IGameboardVisualFactory
 	{
-		IGameboardVisual CreateVisualForGameboard(IGameboard gameboard, GameboardConfiguration config);
+		IGameboardVisual CreateVisualForGameboard(IGameboard gameboard);
 	}
 }

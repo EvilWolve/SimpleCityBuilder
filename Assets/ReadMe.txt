@@ -15,3 +15,5 @@ There are a few such restrictions in the design I was given.
 I'll probably need access to the BuildingManager and the BuildingConfigurationService in a lot of places. I don't like singletons, but this project is a bit too small to throw an IoC Container at it. I'll make do with a Service Locator.
 
 I don't want to use an enum to identify buildings because then I'd need to add a new value for each new building type. Ideally the behaviour of a building is defined by its components, not by an enum (and hopefully neither by the Building-class alone). Using the BuildingConfiguration ScriptableObject's name, we have an easy identifier that also allows us to directly connect the runtime class and the config. Renaming a ScriptableObject is also far more visible in version control than any other ID-attribute I could pick, so it's easy to figure out which building identifiers have changed between releases.
+
+Sooo, I messed up. If I want to enter the base scene from elsewhere, I can't have my classes instantiate visuals on load. Also, the visuals should depend on the data classes, the data shouldn't need to know about the visuals. Inverting the flow of data now...

@@ -1,8 +1,10 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
+using Board;
 using Buildings;
 using Buildings.Save;
 using Buildings.Visual;
+using Configuration.Board;
 using Configuration.Building;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -18,13 +20,18 @@ namespace UnitTests.Buildings
         [SetUp]
         public void Setup()
         {
-            this.buildingService = new BuildingService();
-            ServiceLocator.Instance.ProvideService<IBuildingService>(this.buildingService);
+            IGameboard gameboard = new Gameboard();
+            GameboardConfiguration gameboardConfig = Resources.Load<GameboardConfiguration>("Gameboard Configuration");
+            gameboard.Initialise(gameboardConfig);
+            ServiceLocator.Instance.ProvideService<IGameboard>(gameboard);
             
             this.configService = new BuildingConfigurationService();
             ServiceLocator.Instance.ProvideService<IBuildingConfigurationService>(this.configService);
             
             ServiceLocator.Instance.ProvideService<IBuildingVisualFactory>(new DummyBuildingVisualFactory());
+            
+            this.buildingService = new BuildingService();
+            ServiceLocator.Instance.ProvideService<IBuildingService>(this.buildingService);
 
             BuildingLibrary library = this.GetFakeBuildingLibrary();
             library.buildingConfigurations = new BuildingConfiguration[]

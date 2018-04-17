@@ -5,6 +5,7 @@ using Configuration.Board;
 using Configuration.Building;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Utilities;
 
 namespace Buildings
 {
@@ -23,16 +24,8 @@ namespace Buildings
          public BuildingService()
          {
              this.saveService = new BuildingSaveService();
-             this.gameboard = new Gameboard();
              
-             this.InitialiseGameboard();
-         }
-
-         void InitialiseGameboard()
-         {
-             GameboardConfiguration gameboardConfig = Resources.Load<GameboardConfiguration>("Gameboard Configuration");
-             
-             this.gameboard.Initialise(gameboardConfig);
+             this.gameboard = ServiceLocator.Instance.GetService<IGameboard>();
          }
          
          public void PlaceBuilding(Building building)

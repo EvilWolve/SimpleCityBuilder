@@ -4,7 +4,7 @@ namespace Board.Visual
 {
 	public class DummyGameboardVisualFactory : IGameboardVisualFactory
 	{
-		public IGameboardVisual CreateVisualForGameboard(IGameboard gameboard, GameboardConfiguration config)
+		public IGameboardVisual CreateVisualForGameboard(IGameboard gameboard)
 		{
 			DummyGameboardVisual visual = new DummyGameboardVisual();
 			visual.SetGameboard(gameboard);

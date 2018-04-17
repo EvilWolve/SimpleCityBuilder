@@ -1,17 +1,14 @@
 ﻿using Board.Visual;
-using Buildings.Visual;
 using Configuration.Board;
-using UnityEngine;
-using Utilities;
 
 namespace Board
 {
 	public class Gameboard : IGameboard
 	{
-		public IGameboardVisual Visual { get; private set; }
-		
 		public int Width { get; private set; }
 		public int Height { get; private set; }
+		
+		public GameboardConfiguration Config { get; private set; }
 
 		bool[] grid;
 		
@@ -21,9 +18,8 @@ namespace Board
 			this.Height = config.dimensions.y;
 			
 			this.grid = new bool[this.Width * this.Height];
-			
-			IGameboardVisualFactory gameboardVisualFactory = ServiceLocator.Instance.GetService<IGameboardVisualFactory>();
-			this.Visual = gameboardVisualFactory.CreateVisualForGameboard(this, config);
+
+			this.Config = config;
 		}
 
 		public void Clear()

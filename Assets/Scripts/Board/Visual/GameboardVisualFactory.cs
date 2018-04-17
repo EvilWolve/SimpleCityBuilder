@@ -1,5 +1,4 @@
-﻿using Buildings.Visual;
-using Configuration.Board;
+﻿using Configuration.Board;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,9 +6,9 @@ namespace Board.Visual
 {
 	public class GameboardVisualFactory : IGameboardVisualFactory
 	{
-		public IGameboardVisual CreateVisualForGameboard(IGameboard gameboard, GameboardConfiguration config)
+		public IGameboardVisual CreateVisualForGameboard(IGameboard gameboard)
 		{
-			GameObject prefab = config.prefab;
+			GameObject prefab = gameboard.Config.prefab;
 			Assert.IsNotNull(prefab);
 
 			GameObject go = Object.Instantiate(prefab);
