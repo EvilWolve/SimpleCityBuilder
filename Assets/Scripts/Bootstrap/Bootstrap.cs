@@ -1,4 +1,5 @@
-﻿using Buildings;
+﻿using Board.Visual;
+using Buildings;
 using Buildings.Visual;
 using Configuration.Building;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace Bootstrap
             ServiceLocator.Instance.ProvideService<IBuildingConfigurationService>(new BuildingConfigurationService());
             ServiceLocator.Instance.ProvideService<IBuildingService>(new BuildingService());
             ServiceLocator.Instance.ProvideService<IBuildingVisualFactory>(new BuildingVisualFactory());
+            ServiceLocator.Instance.ProvideService<IGameboardVisualFactory>(new GameboardVisualFactory());
         }
 
         void OnApplicationQuit()

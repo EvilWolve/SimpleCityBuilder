@@ -12,6 +12,8 @@ namespace Buildings.Visual
 
 			GameObject go = Object.Instantiate(prefab);
 			BuildingVisual visual = go.GetComponent<BuildingVisual>();
+			
+			visual.SetBuilding(building);
 
 			return visual;
 		}

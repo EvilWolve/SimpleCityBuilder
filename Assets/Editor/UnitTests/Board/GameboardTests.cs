@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
 using Board;
+using Board.Visual;
 using Configuration.Board;
 using UnityEngine;
+using Utilities;
 
 namespace UnitTests.Board
 {
@@ -13,6 +15,8 @@ namespace UnitTests.Board
         public void Setup()
         {
             this.gameboard = new Gameboard();
+            
+            ServiceLocator.Instance.ProvideService<IGameboardVisualFactory>(new DummyGameboardVisualFactory());
         }
 
         [Test]
