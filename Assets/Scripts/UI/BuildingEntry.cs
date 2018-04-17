@@ -10,15 +10,19 @@ namespace UI
     {
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] Image icon;
+        [SerializeField] GameObject locked;
 
         [SerializeField] DraggableBuilding draggable;
 
-        public void Init(BuildingConfiguration config)
+        public void Init(BuildingConfiguration config, bool canBuild)
         {
             this.title.text = config.buildingName;
             this.icon.sprite = config.icon;
+            
+            this.locked.SetActive(!canBuild);
 
             this.draggable.Init(config);
+            this.draggable.enabled = canBuild;
         }
     }
 }

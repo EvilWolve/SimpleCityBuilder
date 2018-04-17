@@ -31,7 +31,7 @@ namespace UI
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
 
-				if (Physics.Raycast(ray, out hit, 1 << LayerMask.NameToLayer("Gameboard")))
+				if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Gameboard")))
 				{
 					hitGrid = true;
 					

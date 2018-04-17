@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Buildings;
 using Configuration.Building;
 using UnityEngine;
 using Utilities;
@@ -10,6 +11,7 @@ namespace UI
 		[SerializeField] Transform gridRoot;
 		[SerializeField] GameObject entryPrefab;
 
+		IBuildingService buildingService;
 		IBuildingConfigurationService buildingConfigurationService;
 
 		readonly List<BuildingEntry> entries = new List<BuildingEntry>();
@@ -17,9 +19,12 @@ namespace UI
 		BuildingType selectedBuildingType;
 		
 		// TODO: Add functionality to tabs to switch building types
+		
+		// TODO: Refresh menu when building layout has been modified, i.e. a building has been placed or removed
 
 		void Awake()
 		{
+			this.buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
 			this.buildingConfigurationService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
 			
 			this.selectedBuildingType = BuildingType.COMMON;
@@ -47,7 +52,7 @@ namespace UI
 				}
 				
 				entry.gameObject.SetActive(true);
-				entry.Init(buildingsOfType[i]);
+				entry.Init(buildingsOfType[i], this.buildingService.CanBuildBuilding(buildingsOfType[i]));
 			}
 
 			for (int i = buildingsOfType.Count; i < this.entries.Count; i++)
