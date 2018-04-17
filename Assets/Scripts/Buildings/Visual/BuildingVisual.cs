@@ -7,7 +7,8 @@ namespace Buildings.Visual
 		[SerializeField] BoxCollider boxCollider;
 
 		[SerializeField] Transform visualRoot;
-		[SerializeField] MeshRenderer meshRenderer;
+		
+		MeshRenderer meshRenderer;
 		
 		Building building;
 		
@@ -22,6 +23,11 @@ namespace Buildings.Visual
 
 			this.visualRoot.position = new Vector3(building.GridArea.Center.x, 0f, building.GridArea.Center.y);
 			this.visualRoot.localScale = new Vector3(this.building.GridArea.Width, 1f, this.building.GridArea.Height);
+
+			GameObject meshPrefab = this.building.Config.prefab;
+			GameObject meshObj = Object.Instantiate(meshPrefab, this.visualRoot);
+			meshObj.layer = this.gameObject.layer;
+			this.meshRenderer = meshObj.GetComponentInChildren<MeshRenderer>();
 			
 			this.RegisterEvents();
 		}

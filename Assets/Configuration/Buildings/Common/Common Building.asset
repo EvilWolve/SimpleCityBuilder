@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Common Building
   buildingType: 0
-  maxAmount: 0
+  maxAmount: -1
   dimensions: {x: 1, y: 1}
   icon: {fileID: 0}
-  prefab: {fileID: 0}
+  prototype: {fileID: 1292855232379168, guid: 16a59654b99c88b47bd86113d12c3b80, type: 2}
+  prefab: {fileID: 1438432146910362, guid: 6647a8d09d2e38045a3f54f36a63ffbc, type: 2}
   mainColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}

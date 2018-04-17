@@ -7,7 +7,7 @@ namespace Buildings.Visual
 	{
 		public IBuildingVisual CreateVisualForBuilding(Building building)
 		{
-			GameObject prefab = building.Config.prefab;
+			GameObject prefab = building.Config.prototype;
 			Assert.IsNotNull(prefab);
 
 			GameObject go = Object.Instantiate(prefab);

@@ -14,6 +14,7 @@ namespace Configuration.Building
         public Vector2Int dimensions;
 
         public Sprite icon;
+        public GameObject prototype;
         public GameObject prefab;
         public Color mainColor;
 
