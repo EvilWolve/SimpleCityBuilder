@@ -12,12 +12,12 @@ namespace Bootstrap
         {
             this.InitialiseServices();
             
-            IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
-            buildingService.Load();
-            
             IBuildingConfigurationService buildingConfigurationService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
             BuildingLibrary library = Resources.Load<BuildingLibrary>("Building Library");
             buildingConfigurationService.UpdateConfiguration(library);
+            
+            IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
+            buildingService.Load();
         }
 
         void InitialiseServices()

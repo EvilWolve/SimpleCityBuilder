@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Configuration.Board;
+using UnityEngine;
 
 namespace Board
 {
@@ -9,12 +10,17 @@ namespace Board
 
 		bool[] grid;
 		
-		public void Initialise(int width, int height)
+		public void Initialise(GameboardConfiguration config)
 		{
-			this.Width = width;
-			this.Height = height;
+			this.Width = config.dimensions.x;
+			this.Height = config.dimensions.y;
 			
-			this.grid = new bool[width * height];
+			this.grid = new bool[this.Width * this.Height];
+		}
+
+		public void Clear()
+		{
+			this.grid = new bool[this.Width * this.Height];
 		}
 
 		public void SetOccupied(GridRect area, bool occupied)

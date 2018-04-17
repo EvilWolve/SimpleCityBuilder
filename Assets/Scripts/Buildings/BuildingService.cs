@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using Board;
 using Buildings.Save;
+using Configuration.Board;
 using Configuration.Building;
+using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Buildings
 {
@@ -20,8 +23,16 @@ namespace Buildings
          public BuildingService()
          {
              this.saveService = new BuildingSaveService();
-             
              this.gameboard = new Gameboard();
+             
+             this.InitialiseGameboard();
+         }
+
+         void InitialiseGameboard()
+         {
+             GameboardConfiguration gameboardConfig = Resources.Load<GameboardConfiguration>("Gameboard Configuration");
+             
+             this.gameboard.Initialise(gameboardConfig);
          }
          
          public void PlaceBuilding(Building building)
@@ -33,7 +44,7 @@ namespace Buildings
 
          public bool CanPlaceBuilding(Building building)
          {
-             return this.gameboard.IsOccupied(building.GridArea);
+             return !this.gameboard.IsOccupied(building.GridArea);
          }
 
          public bool CanBuildBuilding(BuildingConfiguration buildingConfig)
@@ -60,7 +71,22 @@ namespace Buildings
 
          public void Load()
          {
-             this.buildings = this.saveService.LoadBuildings();
+             this.buildings.Clear();
+             this.gameboard.Clear();
+             
+             List<Building> storedBuilding = this.saveService.LoadBuildings();
+
+             foreach (var building in storedBuilding)
+             {
+                 Assert.IsTrue(this.CanPlaceBuilding(building), "Building loaded from save file cannot be placed correctly on the board!");
+                 
+                 this.PlaceBuilding(building);
+             }
+         }
+
+         public List<Building> GetAllBuildings()
+         {
+             return this.buildings;
          }
      }
  }

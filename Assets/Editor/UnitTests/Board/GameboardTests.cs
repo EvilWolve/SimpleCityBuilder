@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using Board;
+using Configuration.Board;
+using UnityEngine;
 
 namespace UnitTests.Board
 {
@@ -19,7 +21,7 @@ namespace UnitTests.Board
             int width = 25;
             int height = 30;
             
-            this.gameboard.Initialise(width, height);
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
             
             Assert.AreEqual(width, this.gameboard.Width);
             Assert.AreEqual(height, this.gameboard.Height);
@@ -31,7 +33,7 @@ namespace UnitTests.Board
             int width = 4;
             int height = 4;
             
-            this.gameboard.Initialise(width, height);
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
 
             GridRect targetRect = new GridRect(0, 0, 1, 1);
             this.gameboard.SetOccupied(targetRect, true);
@@ -46,7 +48,7 @@ namespace UnitTests.Board
             int width = 4;
             int height = 4;
             
-            this.gameboard.Initialise(width, height);
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
 
             GridRect targetRect = new GridRect(0, 0, 4, 4);
             this.gameboard.SetOccupied(targetRect, true);
@@ -61,7 +63,7 @@ namespace UnitTests.Board
             int width = 4;
             int height = 4;
             
-            this.gameboard.Initialise(width, height);
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
 
             GridRect targetRect = new GridRect(0, 0, 4, 4);
             this.gameboard.SetOccupied(targetRect, true);
@@ -72,6 +74,30 @@ namespace UnitTests.Board
             Assert.IsTrue(this.gameboard.IsOccupied(targetRect));
             Assert.IsFalse(this.gameboard.IsOccupied(freeRect));
             Assert.IsTrue(this.gameboard.IsOccupied(new GridRect(0, 0, 1, 1)));
+        }
+
+        [Test]
+        public void TestClear()
+        {
+            int width = 4;
+            int height = 4;
+            
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
+
+            GridRect targetRect = new GridRect(0, 0, 4, 4);
+            this.gameboard.SetOccupied(targetRect, true);
+            
+            this.gameboard.Clear();
+            
+            Assert.IsFalse(this.gameboard.IsOccupied(targetRect));
+        }
+
+        GameboardConfiguration CreateFakeConfig(int width, int height)
+        {
+            GameboardConfiguration fakeConfig = ScriptableObject.CreateInstance<GameboardConfiguration>();
+            fakeConfig.dimensions = new Vector2Int(width, height);
+
+            return fakeConfig;
         }
     }
 }

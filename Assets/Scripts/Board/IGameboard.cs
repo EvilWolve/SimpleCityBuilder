@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Configuration.Board;
+using UnityEngine;
 
 namespace Board
 {
@@ -7,7 +8,9 @@ namespace Board
         int Width { get; }
         int Height { get; }
         
-        void Initialise(int width, int height);
+        void Initialise(GameboardConfiguration config);
+        void Clear();
+        
         void SetOccupied(GridRect area, bool occupied);
         bool IsOccupied(GridRect area);
     }

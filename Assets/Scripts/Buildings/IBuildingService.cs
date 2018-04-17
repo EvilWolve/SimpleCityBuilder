@@ -1,4 +1,5 @@
-﻿using Configuration.Building;
+﻿using System.Collections.Generic;
+using Configuration.Building;
 
 namespace Buildings
 {
@@ -10,5 +11,8 @@ namespace Buildings
 
         void Save();
         void Load();
+        
+        // WARNING: This is for TESTING ONLY! Do NOT use this in regular gameplay. You should never need to know which buildings exist!
+        List<Building> GetAllBuildings();
     }
 }
