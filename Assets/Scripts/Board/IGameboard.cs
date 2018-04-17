@@ -14,5 +14,9 @@ namespace Board
         
         void SetOccupied(GridRect area, bool occupied);
         bool IsOccupied(GridRect area);
+
+        bool IsInGrid(GridRect area);
+
+        bool IsValidPlacement(GridRect area);
     }
 }

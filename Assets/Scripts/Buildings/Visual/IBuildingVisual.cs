@@ -2,7 +2,8 @@
 {
 	public interface IBuildingVisual
 	{
-		void SetBuilding(Building building);
+		void SetVisible(bool visible);
 		void ShowValidPlacement(bool isValid);
+		void Remove();
 	}
 }

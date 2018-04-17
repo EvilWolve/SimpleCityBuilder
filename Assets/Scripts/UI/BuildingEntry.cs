@@ -11,14 +11,14 @@ namespace UI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] Image icon;
 
-        BuildingConfiguration config;
+        [SerializeField] DraggableBuilding draggable;
 
         public void Init(BuildingConfiguration config)
         {
-            this.config = config;
+            this.title.text = config.buildingName;
+            this.icon.sprite = config.icon;
 
-            this.title.text = this.config.buildingName;
-            this.icon.sprite = this.config.icon;
+            this.draggable.Init(config);
         }
     }
 }

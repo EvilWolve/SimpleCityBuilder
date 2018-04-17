@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222055164385786598}
   - component: {fileID: 114085807034932442}
   - component: {fileID: 114068352840467266}
+  - component: {fileID: 114211491326439440}
   m_Layer: 5
   m_Name: Building Entry
   m_TagString: Untagged
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 114643328152970936}
   icon: {fileID: 114872636006168866}
+  draggable: {fileID: 114211491326439440}
 --- !u!114 &114085807034932442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +105,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114211491326439440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1446531332829658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c63fecda74991b40bc790a0bc3dc2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114643328152970936
 MonoBehaviour:
   m_ObjectHideFlags: 1

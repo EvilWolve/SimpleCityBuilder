@@ -52,6 +52,16 @@ namespace Board
 			return false;
 		}
 
+		public bool IsInGrid(GridRect area)
+		{
+			return area.MinX >= 0 && area.MaxX <= this.Width && area.MinY >= 0 && area.MaxY <= this.Height;
+		}
+
+		public bool IsValidPlacement(GridRect area)
+		{
+			return this.IsInGrid(area) && !this.IsOccupied(area);
+		}
+
 		int GetIndex(int x, int y)
 		{
 			return x + y * this.Width;

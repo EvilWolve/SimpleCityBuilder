@@ -32,9 +32,22 @@ namespace Buildings.Visual
 			this.RegisterEvents();
 		}
 
+		public void SetVisible(bool visible)
+		{
+			if (this.gameObject.activeSelf != visible)
+			{
+				this.gameObject.SetActive(visible);
+			}
+		}
+
 		public void ShowValidPlacement(bool isValid)
 		{
-			this.meshRenderer.material.SetColor("_Tint", isValid ? this.building.Config.mainColor : Color.red);
+			this.meshRenderer.material.SetColor("_Color", isValid ? this.building.Config.mainColor : Color.red);
+		}
+
+		public void Remove()
+		{
+			Object.Destroy(this.gameObject);
 		}
 
 		void RegisterEvents()

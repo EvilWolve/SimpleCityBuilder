@@ -95,6 +95,9 @@ namespace UnitTests.Board
             
             Assert.IsFalse(this.gameboard.IsOccupied(targetRect));
         }
+        
+        // TODO: Write tests for IsInGrid!
+        // TODO: Write tests for IsValidPlacement!
 
         GameboardConfiguration CreateFakeConfig(int width, int height)
         {

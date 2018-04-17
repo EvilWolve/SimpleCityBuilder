@@ -37,7 +37,7 @@ namespace Buildings
 
          public bool CanPlaceBuilding(Building building)
          {
-             return !this.gameboard.IsOccupied(building.GridArea);
+             return this.gameboard.IsValidPlacement(building.GridArea);
          }
 
          public bool CanBuildBuilding(BuildingConfiguration buildingConfig)
