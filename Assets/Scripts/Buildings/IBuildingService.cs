@@ -3,6 +3,8 @@ using Configuration.Building;
 
 namespace Buildings
 {
+    public delegate void OnBuildingsUpdatedDelegate();
+    
     public interface IBuildingService
     {
         void PlaceBuilding(Building building);
@@ -13,5 +15,8 @@ namespace Buildings
         void Load();
         
         List<Building> GetAllBuildings();
+
+        void RegisterBuildingUpdate(OnBuildingsUpdatedDelegate updateDelegate);
+        void UnregisterBuildingUpdate(OnBuildingsUpdatedDelegate updateDelegate);
     }
 }

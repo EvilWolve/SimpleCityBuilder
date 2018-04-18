@@ -16,8 +16,9 @@ namespace Buildings
      public class BuildingService : IBuildingService
      {
          readonly IBuildingSaveService saveService;
-
          readonly IGameboard gameboard;
+
+         event OnBuildingsUpdatedDelegate onBuildingsUpdated;
 
          List<Building> buildings = new List<Building>();
          
@@ -33,6 +34,11 @@ namespace Buildings
              this.gameboard.SetOccupied(building.GridArea, true);
              
              this.buildings.Add(building);
+
+             if (this.onBuildingsUpdated != null)
+             {
+                 this.onBuildingsUpdated();
+             }
          }
 
          public bool CanPlaceBuilding(Building building)
@@ -80,6 +86,16 @@ namespace Buildings
          public List<Building> GetAllBuildings()
          {
              return this.buildings;
+         }
+
+         public void RegisterBuildingUpdate(OnBuildingsUpdatedDelegate updateDelegate)
+         {
+             this.onBuildingsUpdated += updateDelegate;
+         }
+
+         public void UnregisterBuildingUpdate(OnBuildingsUpdatedDelegate updateDelegate)
+         {
+             this.onBuildingsUpdated -= updateDelegate;
          }
      }
  }

@@ -17,10 +17,6 @@ namespace UI
 		IBuildingConfigurationService buildingConfigurationService;
 
 		readonly List<BuildingEntry> entries = new List<BuildingEntry>();
-		
-		// TODO: Add functionality to tabs to switch building types
-		
-		// TODO: Refresh menu when building layout has been modified, i.e. a building has been placed or removed
 
 		void Awake()
 		{
@@ -41,12 +37,21 @@ namespace UI
 
 		void RegisterEvents()
 		{
+			this.buildingService.RegisterBuildingUpdate(this.OnBuildingsUpdated);
+			
 			this.toggleButtonGroup.onSelectionChanged += this.OnBuildingTypeSelectionChanged;
 		}
 
 		void UnregisterEvents()
 		{
+			this.buildingService.UnregisterBuildingUpdate(this.OnBuildingsUpdated);
+			
 			this.toggleButtonGroup.onSelectionChanged -= this.OnBuildingTypeSelectionChanged;
+		}
+
+		void OnBuildingsUpdated()
+		{
+			this.InitialiseBuildings();
 		}
 
 		void OnBuildingTypeSelectionChanged()
