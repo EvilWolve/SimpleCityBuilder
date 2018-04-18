@@ -1,0 +1,19 @@
+I'll try to list here any assets that are not my own.
+
+Code:
+I've tried to avoid using other people's code, the only cases where I did use any directly were editor tools to make my life easier
+
+SceneAutoLoader.cs -> http://wiki.unity3d.com/index.php/SceneAutoLoader
+PlayerPrefsEditor -> https://github.com/sabresaurus/PlayerPrefsEditor
+
+Plugins:
+TextMeshPro -> https://assetstore.unity.com/packages/essentials/beta-projects/textmesh-pro-84126
+
+Art:
+I don't know how to draw. At all. I did want some nice art assets to liven up the game, so I used some that came with an appropriate license.
+
+Generic UI art -> https://opengameart.org/content/ui-pack (Credits to Kenney)
+Free RPG Icons -> https://assetstore.unity.com/packages/2d/gui/icons/free-rpg-icons-111659
+Game Icons -> https://assetstore.unity.com/packages/2d/gui/icons/game-icons-91138
+
+If I used any assets that aren't listed here, it's likely because I forgot. Sorry.
