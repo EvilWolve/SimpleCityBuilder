@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6585e285bffaee0478e2ef72cc1f7263, type: 3}
+  m_Name: Marketplace
+  m_EditorClassIdentifier: 
+  buildingName: Marketplace
+  buildingType: 1
+  maxAmount: 1
+  dimensions: {x: 2, y: 2}
+  icon: {fileID: 21300000, guid: e5003befe3770ef4d91b927163871a99, type: 3}
+  prototype: {fileID: 1292855232379168, guid: 16a59654b99c88b47bd86113d12c3b80, type: 2}
+  prefab: {fileID: 1823775876002618, guid: c68ff8176e7a4fe4f8e5765e888c3102, type: 2}
+  mainColor: {r: 0.9170386, g: 0.9705882, b: 0, a: 1}
+  secondaryColor: {r: 0.79352427, g: 0.841, b: 0, a: 1}
+  popupSceneName: MarketplacePopup

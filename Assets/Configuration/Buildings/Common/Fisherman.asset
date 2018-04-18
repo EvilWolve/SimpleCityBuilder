@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6585e285bffaee0478e2ef72cc1f7263, type: 3}
+  m_Name: Fisherman
+  m_EditorClassIdentifier: 
+  buildingName: Stonemason
+  buildingType: 0
+  maxAmount: -1
+  dimensions: {x: 1, y: 1}
+  icon: {fileID: 21300000, guid: 7dd246bae015387458c848fe85a44fa9, type: 3}
+  prototype: {fileID: 1292855232379168, guid: 16a59654b99c88b47bd86113d12c3b80, type: 2}
+  prefab: {fileID: 1438432146910362, guid: c0a899b8ab25bf945bb971fcae167c1f, type: 2}
+  mainColor: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
+  secondaryColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
+  popupSceneName: CommonBuildingPopup

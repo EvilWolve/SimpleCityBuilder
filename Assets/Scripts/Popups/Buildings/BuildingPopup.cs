@@ -9,7 +9,12 @@ namespace Popups.Buildings
     public abstract class BuildingPopup : BasePopup
     {
         [SerializeField] TextMeshProUGUI titleText;
+        
+        [SerializeField] Image buildingIcon;
+        
         [SerializeField] Image header;
+        [SerializeField] Image info;
+        
         [SerializeField] Image background;
         
         public class BuildingSpawnInfo : SpawnInfo
@@ -33,7 +38,12 @@ namespace Popups.Buildings
         void InitSharedVisuals()
         {
             this.titleText.text = this.config.buildingName;
+
+            this.buildingIcon.sprite = this.config.icon;
+            
             this.header.color = this.config.mainColor;
+            this.info.color = this.config.mainColor;
+            
             this.background.color = this.config.secondaryColor;
         }
     }

@@ -30,7 +30,9 @@ namespace Buildings.Visual
 			GameObject meshPrefab = this.building.Config.prefab;
 			GameObject meshObj = Object.Instantiate(meshPrefab, this.visualRoot);
 			meshObj.layer = this.gameObject.layer;
+			
 			this.meshRenderer = meshObj.GetComponentInChildren<MeshRenderer>();
+			this.meshRenderer.material.SetColor("_Color", this.building.Config.mainColor);
 			
 			this.RegisterEvents();
 		}
