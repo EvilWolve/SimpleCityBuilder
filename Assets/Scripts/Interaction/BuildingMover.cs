@@ -9,10 +9,35 @@ namespace Interaction
 {
     public class BuildingMover
     {
+        public delegate void OnMovementStartedDelegate();
+        public static event OnMovementStartedDelegate onMovementStarted;
+        
+        public delegate void OnMovementEndedDelegate();
+        public static event OnMovementEndedDelegate onMovementEnded;
+        
         Building building;
         IBuildingVisual visual;
 
         IGameboard gameboard;
+
+        public void BeginMoving()
+        {
+            if (BuildingMover.onMovementStarted != null)
+            {
+                BuildingMover.onMovementStarted();
+            }
+        }
+
+        public void EndMoving()
+        {
+            this.building = null;
+            this.visual = null;
+            
+            if (BuildingMover.onMovementEnded != null)
+            {
+                BuildingMover.onMovementEnded();
+            }
+        }
         
         public void InitWithConfig(BuildingConfiguration config)
         {
@@ -85,9 +110,6 @@ namespace Interaction
             {
                 this.visual.Remove();
             }
-            
-            this.building = null;
-            this.visual = null;
         }
     }
 }

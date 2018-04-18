@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Main UI
+    uniqueID: 1202400885
+    locked: 0
+  - name: Building Popup
+    uniqueID: 1511444157
+    locked: 0

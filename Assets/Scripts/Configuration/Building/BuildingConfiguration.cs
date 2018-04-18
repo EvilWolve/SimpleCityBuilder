@@ -16,7 +16,11 @@ namespace Configuration.Building
         public Sprite icon;
         public GameObject prototype;
         public GameObject prefab;
+        
         public Color mainColor;
+        public Color secondaryColor;
+
+        public string popupSceneName;
 
         public override bool Equals(object obj)
         {

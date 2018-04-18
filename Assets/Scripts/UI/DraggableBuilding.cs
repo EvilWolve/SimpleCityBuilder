@@ -20,6 +20,8 @@ namespace UI
 		{
 			this.mover = new BuildingMover();
 			this.mover.InitWithConfig(this.config);
+			
+			this.mover.BeginMoving();
 		}
 
 		public void OnDrag(PointerEventData eventData)
@@ -49,6 +51,9 @@ namespace UI
 		public void OnEndDrag(PointerEventData eventData)
 		{
 			this.mover.TryToPlace();
+			
+			this.mover.EndMoving();
+			this.mover = null;
 		}
 	}
 }

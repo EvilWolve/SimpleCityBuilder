@@ -18,6 +18,9 @@ namespace Popups
 
         public void RequestSpawn(string sceneName, SpawnInfo info)
         {
+            if (BasePopup.IsPopupVisible(sceneName))
+                return;
+            
             if (this.popupsToSpawn.ContainsKey(sceneName))
             {
                 this.popupsToSpawn[sceneName] = info;

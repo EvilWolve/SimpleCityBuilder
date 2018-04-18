@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Popups;
+using Popups.Buildings;
+using UnityEngine;
+using Utilities;
 
 namespace Buildings.Visual
 {
@@ -69,6 +72,15 @@ namespace Buildings.Visual
 		void OnGridPositionUpdated(Vector2Int gridPosition)
 		{
 			this.transform.position = new Vector3(gridPosition.x, 0f, gridPosition.y);
+		}
+
+		public void SpawnPopup()
+		{
+			IPopupSpawner popupSpawner = ServiceLocator.Instance.GetService<IPopupSpawner>();
+			popupSpawner.RequestSpawn(this.building.Config.popupSceneName, new BuildingPopup.BuildingSpawnInfo()
+			{
+				config = this.building.Config
+			});
 		}
 	}
 }
