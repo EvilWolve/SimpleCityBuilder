@@ -4,7 +4,7 @@ using Buildings;
 using Buildings.Visual;
 using Configuration.Board;
 using Configuration.Building;
-
+using Popups;
 using Utilities;
 
 using UnityEngine;
@@ -30,6 +30,8 @@ namespace Bootstrap
             ServiceLocator.Instance.ProvideService<IBuildingConfigurationService>(new BuildingConfigurationService());
             ServiceLocator.Instance.ProvideService<IBuildingVisualFactory>(new BuildingVisualFactory());
             ServiceLocator.Instance.ProvideService<IGameboardVisualFactory>(new GameboardVisualFactory());
+            
+            ServiceLocator.Instance.ProvideService<IPopupSpawner>(new PopupSpawner());
             
             ServiceLocator.Instance.ProvideService<IGameboard>(new Gameboard());
             
