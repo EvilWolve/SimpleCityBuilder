@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace Utilities
+namespace Utilities.Editor
 {
     /// <summary>
     /// Scene auto loader.
