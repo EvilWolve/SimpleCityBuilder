@@ -8,6 +8,7 @@ namespace UI
 {
     public class BuildingEntry : MonoBehaviour
     {
+        [SerializeField] Image background;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] Image icon;
         [SerializeField] GameObject locked;
@@ -16,6 +17,7 @@ namespace UI
 
         public void Init(BuildingConfiguration config, bool canBuild)
         {
+            this.background.color = config.mainColor;
             this.title.text = config.buildingName;
             this.icon.sprite = config.icon;
             
