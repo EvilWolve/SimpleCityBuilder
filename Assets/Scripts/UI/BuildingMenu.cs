@@ -8,6 +8,8 @@ namespace UI
 {
 	public class BuildingMenu : MonoBehaviour
 	{
+		[SerializeField] BuildingMenuToggleButtonGroup toggleButtonGroup;
+		
 		[SerializeField] Transform gridRoot;
 		[SerializeField] GameObject entryPrefab;
 
@@ -15,8 +17,6 @@ namespace UI
 		IBuildingConfigurationService buildingConfigurationService;
 
 		readonly List<BuildingEntry> entries = new List<BuildingEntry>();
-
-		BuildingType selectedBuildingType;
 		
 		// TODO: Add functionality to tabs to switch building types
 		
@@ -27,14 +27,36 @@ namespace UI
 			this.buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
 			this.buildingConfigurationService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
 			
-			this.selectedBuildingType = BuildingType.COMMON;
+			this.RegisterEvents();
 			
+			this.toggleButtonGroup.Init();
+			
+			this.InitialiseBuildings();
+		}
+
+		void OnDestroy()
+		{
+			this.UnregisterEvents();
+		}
+
+		void RegisterEvents()
+		{
+			this.toggleButtonGroup.onSelectionChanged += this.OnBuildingTypeSelectionChanged;
+		}
+
+		void UnregisterEvents()
+		{
+			this.toggleButtonGroup.onSelectionChanged -= this.OnBuildingTypeSelectionChanged;
+		}
+
+		void OnBuildingTypeSelectionChanged()
+		{
 			this.InitialiseBuildings();
 		}
 
 		void InitialiseBuildings()
 		{
-			List<BuildingConfiguration> buildingsOfType = this.buildingConfigurationService.GetBuildingsOfType(this.selectedBuildingType);
+			List<BuildingConfiguration> buildingsOfType = this.buildingConfigurationService.GetBuildingsOfType(this.toggleButtonGroup.CurrentData);
 
 			for (int i = 0; i < buildingsOfType.Count; i++)
 			{
