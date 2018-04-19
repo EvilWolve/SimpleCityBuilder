@@ -42,11 +42,11 @@ namespace Bootstrap
         void InitialiseServices()
         {
             IBuildingConfigurationService buildingConfigurationService = ServiceLocator.Instance.GetService<IBuildingConfigurationService>();
-            BuildingLibrary library = Resources.Load<BuildingLibrary>("Building Library");
+            BuildingLibrary library = Resources.Load<BuildingLibrary>(BuildingLibrary.RESOURCE_LOCATION);
             buildingConfigurationService.UpdateConfiguration(library);
 
             IGameboard gameboard = ServiceLocator.Instance.GetService<IGameboard>();
-            GameboardConfiguration gameboardConfig = Resources.Load<GameboardConfiguration>("Gameboard Configuration");
+            GameboardConfiguration gameboardConfig = Resources.Load<GameboardConfiguration>(GameboardConfiguration.RESOURCE_LOCATION);
             gameboard.Initialise(gameboardConfig);
             
             IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();

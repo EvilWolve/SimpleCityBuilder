@@ -19,3 +19,5 @@ I don't want to use an enum to identify buildings because then I'd need to add a
 Sooo, I messed up. If I want to enter the base scene from elsewhere, I can't have my classes instantiate visuals on load. Also, the visuals should depend on the data classes, the data shouldn't need to know about the visuals. Inverting the flow of data now...
 
 It's a bit silly for now to have 15 different popup scenes for the unique buildings when they are all looking roughly the same. However, I do think there is a benefit to this because for example a non-interactive resource building like a well would show a very different popup (graphics, layout, buttons, possible actions, etc.) than a potion shop. There is always the option to have multiple similar buildings share a popup, e.g. the different kinds of mines.
+
+Alright, I concede. I'm adding an asset validator to make sure that the restrictions regarding building colors, dimensions and such are met. This is a compromise because designers can still tweak values without code support but any deviations from the spec will be highlighted (usually the CI will run tests and notify which ones are failing).
