@@ -16,8 +16,6 @@ namespace Bootstrap
     {
         void Awake()
         {
-            Object.DontDestroyOnLoad(this.gameObject);
-            
             this.RegisterServices();
             
             this.InitialiseServices();
@@ -56,12 +54,6 @@ namespace Bootstrap
         void LoadLevelScene()
         {
             SceneManager.LoadScene("Homebase");
-        }
-
-        void OnApplicationQuit()
-        {
-            IBuildingService buildingService = ServiceLocator.Instance.GetService<IBuildingService>();
-            buildingService.Save();
         }
     }
 }
