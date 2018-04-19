@@ -95,9 +95,82 @@ namespace UnitTests.Board
             
             Assert.IsFalse(this.gameboard.IsOccupied(targetRect));
         }
-        
-        // TODO: Write tests for IsInGrid!
-        // TODO: Write tests for IsValidPlacement!
+
+        [Test]
+        public void TestIsInGrid()
+        {
+            int width = 4;
+            int height = 4;
+            
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
+
+            GridRect targetRect = new GridRect(0, 0, 1, 1);
+            Assert.IsTrue(this.gameboard.IsInGrid(targetRect));
+            
+            targetRect = new GridRect(0, 0, 4, 4);
+            Assert.IsTrue(this.gameboard.IsInGrid(targetRect));
+            
+            targetRect = new GridRect(3, 3, 1, 1);
+            Assert.IsTrue(this.gameboard.IsInGrid(targetRect));
+        }
+
+        [Test]
+        public void TestIsNotInGrid()
+        {
+            int width = 4;
+            int height = 4;
+            
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
+
+            GridRect targetRect = new GridRect(-1, -1, 1, 1);
+            Assert.IsFalse(this.gameboard.IsInGrid(targetRect));
+            
+            targetRect = new GridRect(1, 1, 4, 4);
+            Assert.IsFalse(this.gameboard.IsInGrid(targetRect));
+            
+            targetRect = new GridRect(4, 4, 1, 1);
+            Assert.IsFalse(this.gameboard.IsInGrid(targetRect));
+        }
+
+        [Test]
+        public void TestIsValidPlacement()
+        {
+            int width = 4;
+            int height = 4;
+            
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
+
+            GridRect targetRect = new GridRect(0, 0, 1, 1);
+            Assert.IsTrue(this.gameboard.IsValidPlacement(targetRect));
+
+            this.gameboard.IsOccupied(targetRect);
+            
+            targetRect = new GridRect(1, 1, 3, 3);
+            Assert.IsTrue(this.gameboard.IsValidPlacement(targetRect));
+        }
+
+        [Test]
+        public void TestIsNotValidPlacement()
+        {
+            int width = 4;
+            int height = 4;
+            
+            this.gameboard.Initialise(this.CreateFakeConfig(width, height));
+
+            GridRect targetRect = new GridRect(-1, -1, 1, 1);
+            Assert.IsFalse(this.gameboard.IsValidPlacement(targetRect));
+            
+            targetRect = new GridRect(1, 1, 4, 4);
+            Assert.IsFalse(this.gameboard.IsValidPlacement(targetRect));
+            
+            targetRect = new GridRect(4, 4, 1, 1);
+            Assert.IsFalse(this.gameboard.IsValidPlacement(targetRect));
+            
+            targetRect = new GridRect(0, 0, 4, 4);
+            this.gameboard.SetOccupied(targetRect, true);
+            targetRect = new GridRect(0, 0, 1, 1);
+            Assert.IsFalse(this.gameboard.IsValidPlacement(targetRect));
+        }
 
         GameboardConfiguration CreateFakeConfig(int width, int height)
         {
