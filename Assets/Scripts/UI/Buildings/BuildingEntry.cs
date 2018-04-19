@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 using TMPro;
 
-namespace UI
+namespace UI.Buildings
 {
     public class BuildingEntry : MonoBehaviour
     {

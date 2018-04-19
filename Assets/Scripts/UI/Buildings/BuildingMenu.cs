@@ -4,7 +4,7 @@ using Configuration.Building;
 using UnityEngine;
 using Utilities;
 
-namespace UI
+namespace UI.Buildings
 {
 	public class BuildingMenu : MonoBehaviour
 	{
