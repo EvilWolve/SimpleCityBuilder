@@ -46,9 +46,10 @@ namespace Popups
 
         protected virtual void InitContent(SpawnInfo info)
         {
-            Assert.IsNotNull(info);
-            
-            this.onClose = info.onClose;
+            if (info != null)
+            {
+                this.onClose = info.onClose;
+            }
         }
 
         void Appear()

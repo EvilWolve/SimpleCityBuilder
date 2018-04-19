@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Homebase.unity
     guid: a559a97e23f2b45478a14572f6d0fce5
   - enabled: 1
+    path: Assets/Scenes/SettingsPopup.unity
+    guid: 1c5723ce59e25da40a5bfe476024a591
+  - enabled: 1
     path: Assets/Scenes/CommonBuildingPopup.unity
     guid: 50dc066c942b3314690c26a9718020e7
   - enabled: 1

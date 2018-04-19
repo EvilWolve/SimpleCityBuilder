@@ -63,6 +63,16 @@ namespace Buildings
              return amount < buildingConfig.maxAmount;
          }
 
+         public void Clear()
+         {
+             foreach (var building in this.buildings)
+             {
+                 this.gameboard.SetOccupied(building.GridArea, false);
+             }
+             
+             this.buildings.Clear();
+         }
+
          public void Save()
          {
              this.saveService.SaveBuildings(this.buildings);

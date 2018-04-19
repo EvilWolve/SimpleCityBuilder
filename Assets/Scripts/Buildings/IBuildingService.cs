@@ -11,6 +11,7 @@ namespace Buildings
         bool CanPlaceBuilding(Building building);
         bool CanBuildBuilding(BuildingConfiguration buildingConfig);
 
+        void Clear();
         void Save();
         void Load();
         
